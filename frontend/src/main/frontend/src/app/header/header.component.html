@@ -1,0 +1,40 @@
+<div class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a routerLink="/" class="navbar-brand">
+        Name me
+      </a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a style="cursor: pointer;" (click)="onPush()">Push</a></li>
+        <li><a>{{role}}</a></li>
+      </ul>
+      <ul class="navbar-nav nav navbar-right">
+        <li *ngIf="!role">
+          <a routerLink="/signin">Ввійти</a>
+        </li>
+        <li *ngIf="!role">
+          <a routerLink="/signup">Зареєструватись</a>
+        </li>
+
+        <li class="dropdown" *ngIf="role && role=='ROLE_USER'" dropdown [dropdownToggle]="false">
+          <a style="cursor: pointer;" class="dropdown-toggle" role="button" dropdown-open>Manage <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a style="cursor: pointer;" routerLink="/user/list">Мої замовлення</a></li>
+            <li><a style="cursor: pointer;" routerLink="/user/form">Нове замовлення</a></li>
+            <li><a style="cursor: pointer;" routerLink="/user/menu">Настройки</a></li>
+          </ul>
+        </li>
+
+
+
+
+        <li *ngIf="role">
+          <a (click)="onLogout()" routerLink="/signup">Вийти</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
