@@ -21,6 +21,8 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String username;
     private String password;
+    @OneToOne
+    private UserInfo userInfo;
     @Enumerated(EnumType.STRING)
     private Role role = Role.ROLE_USER;
     private boolean accountNonExpired = true;
@@ -73,6 +75,14 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return enabled;
+    }
+
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
     }
 
     public int getId() {

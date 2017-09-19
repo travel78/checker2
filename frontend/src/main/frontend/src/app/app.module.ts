@@ -17,6 +17,8 @@ import { UserMenuComponent } from './user/user-menu/user-menu.component';
 import { UserComponent } from './user/user.component';
 import {AuthGuardUserService} from "./auth/auth-guard-user.service";
 import {AuthGuardAdminService} from "./auth/auth-guard-admin.service";
+import { AdminComponent } from './admin/admin.component';
+import {UserService} from "./shared/user.service";
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import {AuthGuardAdminService} from "./auth/auth-guard-admin.service";
     OrderFormComponent,
     OrderListComponent,
     UserMenuComponent,
-    UserComponent
+    UserComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,7 @@ import {AuthGuardAdminService} from "./auth/auth-guard-admin.service";
 
 
   ],
-  providers: [AuthService,AuthGuardUserService,AuthGuardAdminService],
+  providers: [AuthService,AuthGuardUserService,AuthGuardAdminService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

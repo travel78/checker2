@@ -1,6 +1,7 @@
 package com.shpyrna.service;
 
 import com.shpyrna.entity.User;
+import com.shpyrna.entity.UserInfo;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 
@@ -13,5 +14,7 @@ public interface UserService extends UserDetailsService {
 
     User findUserByUsername(String username);
 
+    void addInfo(int userId, UserInfo userInfo);
 
+    User findById(Integer id);
 }

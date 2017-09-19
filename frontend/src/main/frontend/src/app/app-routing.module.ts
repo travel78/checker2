@@ -8,6 +8,7 @@ import {OrderFormComponent} from "./user/order-form/order-form.component";
 import {UserMenuComponent} from "./user/user-menu/user-menu.component";
 import {UserComponent} from "./user/user.component";
 import {AuthGuardUserService} from "./auth/auth-guard-user.service";
+import {AdminComponent} from "./admin/admin.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/main', pathMatch: 'full'},
@@ -15,7 +16,7 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
   {
-    path: 'user', component: UserComponent,canActivate: [AuthGuardUserService], children: [
+    path: 'user', component: UserComponent, children: [
     {path: '', redirectTo: 'list', pathMatch: 'full'},
     {path: 'list', component: OrderListComponent},
     {path: 'form', component: OrderFormComponent},
@@ -23,9 +24,7 @@ const routes: Routes = [
 
   ]
   },
-  {
-    path: 'admin', component: SigninComponent, children: []
-  }
+  {path: 'admin', component: AdminComponent  }
 
 ];
 @NgModule({

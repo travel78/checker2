@@ -1,7 +1,9 @@
 package com.shpyrna.service.impl;
 
 import com.shpyrna.dao.UserDao;
+import com.shpyrna.dao.UserInfoDao;
 import com.shpyrna.entity.User;
+import com.shpyrna.entity.UserInfo;
 import com.shpyrna.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +19,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private UserInfoDao userInfoDao;
+
     @Override
     public void save(User user) {
         userDao.save(user);
@@ -26,6 +31,18 @@ public class UserServiceImpl implements UserService {
     public User findUserByUsername(String username) {
         System.out.println("call in findUserByUsername");
         return userDao.findByUsername(username);
+    }
+
+    @Override
+    public void addInfo(int userId, UserInfo userInfo) {
+        User user = userDao.findOne(userId);
+        userInfoDao.save(userInfo);
+        user.setUserInfo(userInfo);
+    }
+
+    @Override
+    public User findById(Integer id) {
+        return userDao.findOne(id);
     }
 
     @Override
